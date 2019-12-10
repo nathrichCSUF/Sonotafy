@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 // import './App.css';
 import Spotify from 'spotify-web-api-js';
 const spotifyWebApi = new Spotify();
+var spotifyAudio = new Audio();
 var i = 0;
 
 class App extends Component {
@@ -21,16 +22,26 @@ class App extends Component {
       },
       playlistTracks: {
         track1: '',
+        track1pu: '',
         track2: '',
+        track2pu: '',
         track3: '',
+        track3pu: '',
         track4: '',
-        track5: ''
+        track4pu: '',
+        track5: '',
+        track5pu: '',
       },
-      userInput: "sad"
+      userInput: 'sad'
     }
     if (params.access_token) {
       spotifyWebApi.setAccessToken(params.access_token)
     }
+  }
+
+  getAudioObject(){
+    const spotifyaudio = new Audio()
+    return spotifyaudio;
   }
 
   // Get access tokens
@@ -60,7 +71,6 @@ class App extends Component {
   // Search for playlists that include 'Sad'
   searchPlaylists() {
     spotifyWebApi.searchPlaylists(this.state.userInput)
-
       .then((response) => {
         this.setState({
           playlistResults: {
@@ -75,17 +85,43 @@ class App extends Component {
   getPlaylistTracks() {
     spotifyWebApi.getPlaylistTracks(this.state.playlistResults.id)
       .then((response) => {
-        console.log(response);
+        // console.log(response.items[0].track.preview_url);
         this.setState({
           playlistTracks: {
             track1: response.items[0].track.name,
+            track1pu: response.items[0].track.preview_url,
             track2: response.items[1].track.name,
+            track2pu: response.items[1].track.preview_url,
             track3: response.items[2].track.name,
+            track3pu: response.items[2].track.preview_url,
             track4: response.items[3].track.name,
+            track4pu: response.items[3].track.preview_url,
             track5: response.items[4].track.name,
+            track5pu: response.items[4].track.preview_url,
           }
         })
       })
+  }
+
+  spotifyPlay1() {
+    spotifyAudio = new Audio(this.state.playlistTracks.track1pu);
+    spotifyAudio.play();
+  }
+  spotifyPlay2() {
+    spotifyAudio = new Audio(this.state.playlistTracks.track2pu);
+    spotifyAudio.play();
+  }
+  spotifyPlay3() {
+    spotifyAudio = new Audio(this.state.playlistTracks.track3pu);
+    spotifyAudio.play();
+  }
+  spotifyPlay4() {
+    spotifyAudio = new Audio(this.state.playlistTracks.track4pu);
+    spotifyAudio.play();
+  }
+  spotifyPlay5() {
+    spotifyAudio = new Audio(this.state.playlistTracks.track5pu);
+    spotifyAudio.play();
   }
 
   render() {
@@ -115,7 +151,6 @@ class App extends Component {
 
         <div>
           <form>
-            <p><input type='text' placeholder='mood' mood='happy'></input></p>
             <p><button onClick={() => this.searchPlaylists()}>
               Search for a Playlist
 				</button>
@@ -138,14 +173,19 @@ class App extends Component {
           Top Five Tracks:
           <br></br>
           {this.state.playlistTracks.track1}
+          <button onClick={() => this.spotifyPlay1()}>Play Track 1</button>
           <br></br>
           {this.state.playlistTracks.track2}
+          <button onClick={() => this.spotifyPlay2()}>Play Track 2</button>
           <br></br>
           {this.state.playlistTracks.track3}
+          <button onClick={() => this.spotifyPlay3()}>Play Track 3</button>
           <br></br>
           {this.state.playlistTracks.track4}
+          <button onClick={() => this.spotifyPlay4()}>Play Track 4</button>
           <br></br>
           {this.state.playlistTracks.track5}
+          <button onClick={() => this.spotifyPlay5()}>Play Track 5</button>
         </div>
 
       </div>
