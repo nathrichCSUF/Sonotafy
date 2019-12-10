@@ -5,23 +5,18 @@ import './styles.css';
 import Navbar from './Navbar.js';
 import Button from './Button.js';
 import Form from './Form.js';
+import Home from './Home.js';
+import CreateAccount from './createAccount.js'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <style>
-          @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-        </style>
-        <Navbar />
-      </header>
-      <div className="Body">
-        {/*<Button name="Search For Songs" />*/}
-        <Form title="Create Account"/>
-        <h3>---- OR ----</h3>
-        <Form title="Log In"/>
-      </div>
-    </div>
+    <BrowserRouter>
+
+      <Route path="/" component={Home} exact />
+      <Route path="/createaccount" render={(props) => <CreateAccount {...props}/>}/>
+    </BrowserRouter>
+
   );
 }
 
