@@ -1,11 +1,14 @@
 import React, { Component, useState } from 'react';
 // import './App.css';
 import Spotify from 'spotify-web-api-js';
+import Navbar from './Navbar.js';
+import './styles.css';
+import './App.css';
 const spotifyWebApi = new Spotify();
 var spotifyAudio = new Audio();
 var i = 0;
 
-class App extends Component {
+class Results extends Component {
   constructor() {
     super();
 
@@ -127,70 +130,61 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <header className="App-header">
+          <Navbar />
+        </header>
+        <div className="Body">
+          <a href="http://localhost:8888">
+            <button>
+              Login With Spotify
+              </button>
+          </a>
 
-        <a href="http://localhost:8888">
-          <button>
-            Login With Spotify
+          <div>
+            <img src={this.state.nowPlaying.image} style={{ width: 100 }}>
+            </img>
+            <h3>Now Playing: {this.state.nowPlaying.name}</h3>
+            <button onClick={() => this.getNowPlaying()}>
+              Check Now Playing
             </button>
-        </a>
+            <form>
+              <p><button onClick={() => this.searchPlaylists()}>
+                Search for a Playlist
+  				</button>
+              </p>
+            </form>
+          </div>
 
-        <div>
-          Now Playing: {this.state.nowPlaying.name}
-        </div>
+          <div>
+            <h3>Search Results: {this.state.playlistResults.name}</h3>
+            <button onClick={() => this.getPlaylistTracks()}>
+              Show Playlist Tracks
+              </button>
+          </div>
 
-        <div>
-          <img src={this.state.nowPlaying.image} style={{ width: 100 }}>
-          </img>
-        </div>
-        
-        <div>
-          <button onClick={() => this.getNowPlaying()}>
-            Check Now Playing
-          </button>
-        </div>
+          <div>
 
-        <div>
-          <form>
-            <p><button onClick={() => this.searchPlaylists()}>
-              Search for a Playlist
-				</button>
-            </p>
-          </form>
-        </div>
+            <h3>Top Five Tracks:</h3>
 
-        <div>
-          Search Results: {this.state.playlistResults.name}
+            {this.state.playlistTracks.track1}
+            <button onClick={() => this.spotifyPlay1()}>Play Track 1</button>
+            <br></br>
+            {this.state.playlistTracks.track2}
+            <button onClick={() => this.spotifyPlay2()}>Play Track 2</button>
+            <br></br>
+            {this.state.playlistTracks.track3}
+            <button onClick={() => this.spotifyPlay3()}>Play Track 3</button>
+            <br></br>
+            {this.state.playlistTracks.track4}
+            <button onClick={() => this.spotifyPlay4()}>Play Track 4</button>
+            <br></br>
+            {this.state.playlistTracks.track5}
+            <button onClick={() => this.spotifyPlay5()}>Play Track 5</button>
+          </div>
         </div>
-
-        <div>
-          <button onClick={() => this.getPlaylistTracks()}>
-            Show Playlist Tracks
-            </button>
-        </div>
-
-        <div>
-          <br></br>
-          Top Five Tracks:
-          <br></br>
-          {this.state.playlistTracks.track1}
-          <button onClick={() => this.spotifyPlay1()}>Play Track 1</button>
-          <br></br>
-          {this.state.playlistTracks.track2}
-          <button onClick={() => this.spotifyPlay2()}>Play Track 2</button>
-          <br></br>
-          {this.state.playlistTracks.track3}
-          <button onClick={() => this.spotifyPlay3()}>Play Track 3</button>
-          <br></br>
-          {this.state.playlistTracks.track4}
-          <button onClick={() => this.spotifyPlay4()}>Play Track 4</button>
-          <br></br>
-          {this.state.playlistTracks.track5}
-          <button onClick={() => this.spotifyPlay5()}>Play Track 5</button>
-        </div>
-
       </div>
     )
   }
 }
 
-export default App;
+export default Results;

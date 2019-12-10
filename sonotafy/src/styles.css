@@ -72,6 +72,11 @@ button {
 }
 
 
+button:hover {
+  border-color: rgb(255,120, 210);
+  background-color: rgb( 16, 230, 151);
+}
+
 
 .form-wrapper {
   font-size: 15px;
