@@ -7,7 +7,22 @@ import Button from './Button.js';
 import Form from './Form.js';
 
 
-class Home extends React.Component {
+class Account extends React.Component {
+
+  state = {
+    user: '',
+    pw: ''
+  }
+
+  componentDidMount() {
+    const { pw } = this.props.location.state;
+    const { user } = this.props.location.state;
+    this.setState({user: user, pw: pw});
+  }
+
+
+
+
   render() {
     return (
         <div className="App">
@@ -17,13 +32,14 @@ class Home extends React.Component {
           </header>
           <div className="Body">
             {/*<Button name="Search For Songs" />*/}
-            <Form title="Create Account" link="/createaccount"/>
-            <h3>---- OR ----</h3>
-            <Form title="Log In" link="/account"/>
+            <h1>{this.props.data}</h1>
+            <h1>{this.state.user}</h1>
+            <h1>{this.state.pw}</h1>
           </div>
         </div>
     );
   }
 }
 
-export default Home;
+
+export default Account;
