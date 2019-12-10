@@ -33,7 +33,7 @@ class Form extends React.Component {
         Username:
         <input type="text" onChange={this.setUser} value={this.state.User}/>
         Password:
-        <input type="text" onChange={this.setPw} value={this.state.Pw}/>
+        <input type="password" onChange={this.setPw} value={this.state.Pw}/>
         <Link to={{
           pathname: this.props.link,
           state: {
