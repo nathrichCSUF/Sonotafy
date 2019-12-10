@@ -8,9 +8,11 @@ class Button extends React.Component {
 
   render() {
     return (
-      <button>
-        {this.props.name}
-      </button>
+      <a href={this.props.link}>
+        <button>
+          {this.props.name}
+        </button>
+      </a>
     )
   }
 }
