@@ -5,6 +5,17 @@ import './styles.css';
 import Navbar from './Navbar.js';
 import Button from './Button.js';
 import Form from './Form.js';
+import * as firebase from 'firebase/app';
+import 'firebase/auth'
+const config = {
+  apiKey: "AIzaSyDd0VuaCa5mYNfL1LaPclEladrN7C1qeyc",
+  authDomain: "sonotafy-efaf9.firebaseapp.com",
+  databaseURL: "https://sonotafy-efaf9.firebaseio.com",
+  projectId: "sonotafy-efaf9",
+  storageBucket: "sonotafy-efaf9.appspot.com",
+  messagingSenderId: "435894611976",
+}
+firebase.initializeApp(config);
 
 
 
@@ -13,13 +24,21 @@ class createAccount extends React.Component {
 
   state = {
     user: '',
-    pw: ''
+    pw: '',
+    msg: ''
   }
 
   componentDidMount() {
     const { pw } = this.props.location.state;
     const { user } = this.props.location.state;
-    this.setState({user: user, pw: pw});
+    var msg = user + 'Account Created';
+    firebase.auth().createUserWithEmailAndPassword(user, pw).catch(function(error) {
+      // Handle Errors here.
+      console.log(error.message);
+      msg = "Error creating " + user;
+      // ...
+    });
+    this.setState({user: user, pw: pw, msg: msg});
   }
 
 
@@ -36,7 +55,7 @@ class createAccount extends React.Component {
             {/*<Button name="Search For Songs" />*/}
             <h1>{this.props.data}</h1>
             <h1>{this.state.user}</h1>
-            <h1>{this.state.pw}</h1>
+            <h1>{this.state.msg}</h1>
           </div>
         </div>
     );
