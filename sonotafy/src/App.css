@@ -44,3 +44,7 @@
   color: rgb(255, 120, 210);
   margin: 20px;
 }
+
+.Body button:hover {
+  background-color: rgb(16, 230, 151);
+}

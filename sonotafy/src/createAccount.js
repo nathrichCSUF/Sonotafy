@@ -31,7 +31,7 @@ class createAccount extends React.Component {
   componentDidMount() {
     const { pw } = this.props.location.state;
     const { user } = this.props.location.state;
-    var msg = user + 'Account Created';
+    var msg = user + ' Account Created';
     firebase.auth().createUserWithEmailAndPassword(user, pw).catch(function(error) {
       // Handle Errors here.
       console.log(error.message);
@@ -53,10 +53,10 @@ class createAccount extends React.Component {
           </header>
           <div className="Body">
             {/*<Button name="Search For Songs" />*/}
-            <h1>{this.props.data}</h1>
-            <h1>{this.state.user}</h1>
             <h1>{this.state.msg}</h1>
+            <Button name="Back" link="/" />
           </div>
+          
         </div>
     );
   }

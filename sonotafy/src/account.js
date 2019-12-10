@@ -50,7 +50,7 @@ class Account extends React.Component {
           <div className="Body">
             {/*<Button name="Search For Songs" />*/}
             <h1>Hello {this.state.user}!</h1>
-
+            <Button name="Back" link="/"/>
           </div>
         </div>
     );
