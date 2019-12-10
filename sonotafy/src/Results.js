@@ -5,7 +5,7 @@ import Navbar from './Navbar.js';
 import './styles.css';
 import './App.css';
 const spotifyWebApi = new Spotify();
-var spotifyAudio = new Audio();
+var spotifyAudio;
 var i = 0;
 
 class Results extends Component {
@@ -40,11 +40,6 @@ class Results extends Component {
     if (params.access_token) {
       spotifyWebApi.setAccessToken(params.access_token)
     }
-  }
-
-  getAudioObject(){
-    const spotifyaudio = new Audio()
-    return spotifyaudio;
   }
 
   // Get access tokens
@@ -127,6 +122,10 @@ class Results extends Component {
     spotifyAudio.play();
   }
 
+  spotifyPause() {
+    spotifyAudio.pause();
+  }
+
   render() {
     return (
       <div className="App">
@@ -168,18 +167,23 @@ class Results extends Component {
 
             {this.state.playlistTracks.track1}
             <button onClick={() => this.spotifyPlay1()}>Play Track 1</button>
+            <button onClick={() => this.spotifyPause()}>Pause Track 1</button>
             <br></br>
             {this.state.playlistTracks.track2}
             <button onClick={() => this.spotifyPlay2()}>Play Track 2</button>
+            <button onClick={() => this.spotifyPause()}>Pause Track 2</button>
             <br></br>
             {this.state.playlistTracks.track3}
             <button onClick={() => this.spotifyPlay3()}>Play Track 3</button>
+            <button onClick={() => this.spotifyPause()}>Pause Track 3</button>
             <br></br>
             {this.state.playlistTracks.track4}
             <button onClick={() => this.spotifyPlay4()}>Play Track 4</button>
+            <button onClick={() => this.spotifyPause()}>Pause Track 4</button>
             <br></br>
             {this.state.playlistTracks.track5}
             <button onClick={() => this.spotifyPlay5()}>Play Track 5</button>
+            <button onClick={() => this.spotifyPause()}>Pause Track 5</button>
           </div>
         </div>
       </div>
