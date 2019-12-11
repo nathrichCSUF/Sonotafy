@@ -8,6 +8,7 @@ import Form from './Form.js';
 import Home from './Home.js';
 import CreateAccount from './createAccount.js';
 import Account from './account.js';
+import Results from './Results.js';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" component={Home} exact />
       <Route path="/createaccount" render={(props) => <CreateAccount {...props}/>}/>
       <Route path="/account" render={(props) => <Account {...props}/>}/>
+      <Route path="/results" render={(props) => <Results {...props}/>}/>
     </BrowserRouter>
 
   );
