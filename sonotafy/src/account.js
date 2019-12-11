@@ -7,6 +7,9 @@ import Button from './Button.js';
 import Form from './Form.js';
 import * as firebase from 'firebase/app';
 import 'firebase/auth'
+import { Link } from 'react-router-dom'
+
+
 const config = {
   apiKey: "AIzaSyDd0VuaCa5mYNfL1LaPclEladrN7C1qeyc",
   authDomain: "sonotafy-efaf9.firebaseapp.com",
@@ -50,7 +53,18 @@ class Account extends React.Component {
           <div className="Body">
             {/*<Button name="Search For Songs" />*/}
             <h1>Hello {this.state.user}!</h1>
-            <Button name="Back" link="/"/>
+            <div className="accounts-button">
+              <Button name="Back" link="/"/>
+              <Link to={{
+                pathname: '/results',
+                state: {
+                  user: this.state.User,
+                  pw: this.state.Pw
+                }
+              }}>
+              <Button name="Spotify"/>
+              </Link>
+            </div>
           </div>
         </div>
     );
