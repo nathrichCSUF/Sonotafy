@@ -20,12 +20,20 @@ Use Cases:
   1. Create Account with email and username on first page
   
      a. Enter usename and passsword 
+     
      b. Click Submit
+     
      c. Your account is now in firebase, you can go back and log in
+     
   2. Log In and Search For Mood Music
   
      a. Log in with credentials of created account
+     
      b Click Spotify Button
+     
      c. Click Log in to Spotify Button
+     
      d. Search for a track based on mood
+     
      e. Of the 5 tracks you can click them to preview them
+     
